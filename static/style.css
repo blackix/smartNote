@@ -23,6 +23,7 @@ h1, h2 {
     text-align: center;
     margin-bottom: 20px;
 }
+
 #note-form, ::placeholder{
     color: #ddd;
 }
@@ -31,7 +32,7 @@ h1, h2 {
     padding: 20px;
     border-radius: 15px;
     border: 1px solid #ccc;
-    font-family: 'DM Sans', sans-serif;  /* Apply the custom Oliver font */
+    font-family: 'DM Sans', sans-serif;  
     font-size: 34px;
     color: rgb(58, 58, 58);
     outline: none;
@@ -40,7 +41,7 @@ h1, h2 {
 button {
     display: none;
     padding: 20px 20px;
-    background-color: #4CAF50;
+    background-color: #d81cbc;
     color: white;
     border: none;
     border-radius: 15px;
@@ -49,10 +50,21 @@ button {
 button:hover {
     background-color: #45a049;
 }
+
 #result {
-    text-align: center;
-    margin-top: 20px;
+    position: absolute;
+    top: 60px;
+    right:  150px; /* Adjust based on input width and padding */
+    transform: translateY(-50%);
+    /* background-color: #3964ff; */
+    padding: 10px;
+    border-radius: 25px;
+    color: #6dc0d5;
+    font-weight: 400;
+   font-size: 18px;
+    transition: opacity 0.5s ease-in-out; /* Animation for fade-in and fade-out */
 }
+
 #calendar {
     display: flex;
     justify-content: space-between;
@@ -69,6 +81,7 @@ button:hover {
     border-radius: 15px;
     margin-right: 8px;
     color: #f1f1f1;
+    height: 22vh;
 }
 .day h3 {
     margin: 0;
@@ -76,7 +89,7 @@ button:hover {
 }
 .box {
     margin-top: 10px;
-    min-height: 100px;
+    height: 15vh;
     border: 0px dashed #ddd;
     border-radius: 10px;
     position: relative;
@@ -102,10 +115,10 @@ button:hover {
     margin-top: 5px;
     margin-bottom: 5px;
     color: #b6d4ef;
-    padding: 5px;
-    margin-right: 2px;
+    padding: 10px;
+  
     position: relative;
-    width: calc(100% - 10px);
+    width: calc(100% - 50px);
     font-weight: bold;
     align-items: center;
     font-size: 16px;
@@ -125,9 +138,9 @@ button:hover {
     border: 1px solid #ddd;
     padding: 10px;
     box-sizing: border-box;
-    min-height: 200px;
+ height: 220px;
     border-radius: 15px;
-    margin-right: 8px;
+    margin-right: 20px;
     background-color: #ffffff9e;
 }
 
@@ -146,7 +159,7 @@ button:hover {
     bottom: 15px;
     left: 20px;
     right: 20px;
-    height: 40vh;
+    height: 33vh;
     border: 1px solid #ddd;
     background-color: #f9f9f9;
     overflow: auto;
@@ -177,7 +190,7 @@ button:hover {
     cursor: move;
     overflow: auto;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Add shadow to post-its */
-    font-size: 16px;
+    font-size: 26px;
 }
 .postit .delete-button {
     position: absolute;
@@ -202,17 +215,18 @@ button:hover {
     cursor: pointer;
     font-size: 12px;
 }
+
 .postit.pink {
     background-color: pink;
 }
 .postit.green {
-    background-color: lightgreen;
+    background-color: #ABD699;
 }
 .postit.yellow {
-    background-color: yellow;
+    background-color: #F9E29A;
 }
 .today {
-    background-color: #ffe6e6;
+    background-color: #75C987;
 }
 .today h3 {
     color: red;
@@ -232,4 +246,34 @@ button:hover {
 }
 #bold-button, #italic-button {
     cursor: pointer;
+}
+#color-selectors,
+#background-color-selectors {
+    display: inline-block;
+}
+.color-selector {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    margin: 0 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 2px solid #eaeaea;
+}
+
+#background-color-selectors {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.postit-formatting-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    background-color: #ABD699; /* Default background color */
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
 }

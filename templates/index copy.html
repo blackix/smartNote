@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 </head>
 <body>
-
     <form id="note-form">
         <input type="text" id="note" name="note" placeholder="Inserisci il tuo appunto:" />
         <button type="submit">Classifica e Aggiungi Nota</button>
@@ -24,25 +23,24 @@
         <div class="day" id="day6"><h3></h3><div class="box"></div></div>
     </div>
     <div id="reminders">
-     
-        <div class="reminder-column" id="reminder-column-1">  <div id="reminder-label">PROMEMORIA</div></div>
+        
+        <div class="reminder-column" id="reminder-column-1"><h2>Promemoria</h2></div>
         <div class="reminder-column" id="reminder-column-2"></div>
         <div class="reminder-column" id="reminder-column-3"></div>
-        <div class="reminder-column" id="reminder-column-4"> </div>
+        <div class="reminder-column" id="reminder-column-4"></div>
     </div>
-     
-
+    
+    <!-- Background Color Selectors -->
     <div id="background-color-selectors">
-       
-        <div class="color-selector" data-color="#d573bd" style="background-color: #d573bd;"></div>
+
+        <div class="color-selector" data-color="#ABD699" style="background-color: #ABD699;"></div>
         <div class="color-selector" data-color="#F7E26A" style="background-color: #F7E26A;"></div>
         <div class="color-selector" data-color="#75C987" style="background-color: #75C987;"></div>
-        <div class="color-selector" data-color="#c7cDCC" style="background-color: #c7cDCC;"></div>
-        <div class="color-selector" data-color="#55627c" style="background-color: #55627c;"></div>
+        <div class="color-selector" data-color="#C7DDCC" style="background-color: #C7DDCC;"></div>
+        <div class="color-selector" data-color="#16123F" style="background-color: #16123F;"></div>
     </div>
-
-
-  <div id="postit-area">
+    
+    <div id="postit-area">
         <!-- Formatting Bar Inside Post-It Area -->
         <div id="formatting-bar" class="postit-formatting-bar">
           
@@ -58,13 +56,13 @@
             <input type="range" id="font-size-slider" min="10" max="30" value="14">
       
             <div id="postit-color-selectors" class="color-selectors">
-                <div class="color-selector" data-color="#d573bd" style="background-color: #d573bd;"></div>
+                <div class="color-selector" data-color="#ABD699" style="background-color: #ABD699;"></div>
                 <div class="color-selector" data-color="#F7E26A" style="background-color: #F7E26A;"></div>
                 <div class="color-selector" data-color="#75C987" style="background-color: #75C987;"></div>
-                <div class="color-selector" data-color="#292f45" style="background-color: #292f45;"></div>
+                <div class="color-selector" data-color="#C7DDCC" style="background-color: #C7DDCC;"></div>
             </div>
         </div>
-        <div id="postit-label">POST.IT</div>
+        <div id="postit-label">post-it</div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

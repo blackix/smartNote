@@ -91,6 +91,7 @@ let currentFont = 'DM Sans';
 let currentBold = false;
 let currentItalic = false;
 let currentFontSize = '14px';
+let currentColor = '#ABD699'; // Default color
 
 // Update the formatting options when the user changes them
 document.getElementById('font-select').addEventListener('change', function() {
@@ -111,6 +112,19 @@ document.getElementById('font-size-slider').addEventListener('input', function()
     currentFontSize = this.value + 'px';
 });
 
+document.querySelectorAll('#postit-color-selectors .color-selector').forEach(function(selector) {
+    selector.addEventListener('click', function() {
+        currentColor = this.getAttribute('data-color');
+        document.querySelector('.postit-formatting-bar').style.backgroundColor = currentColor;
+    });
+});
+
+document.querySelectorAll('#background-color-selectors .color-selector').forEach(function(selector) {
+    selector.addEventListener('click', function() {
+        document.body.style.backgroundColor = this.getAttribute('data-color');
+    });
+});
+
 function createPostIt(note) {
     var postIt = document.createElement('div');
     postIt.className = 'postit';
@@ -121,6 +135,7 @@ function createPostIt(note) {
     postIt.style.fontWeight = currentBold ? 'bold' : 'normal';
     postIt.style.fontStyle = currentItalic ? 'italic' : 'normal';
     postIt.style.fontSize = currentFontSize;
+    postIt.style.backgroundColor = currentColor;
 
     // Aggiungi pulsante di eliminazione
     var deleteButton = document.createElement('button');
