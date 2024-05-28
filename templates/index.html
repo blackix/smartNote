@@ -24,10 +24,36 @@
         <div class="day" id="day6"><h3></h3><div class="box"></div></div>
     </div>
     <div id="reminders">
-        <h2>Promemoria</h2>
-        <ul id="reminder-list"></ul>
+     
+        <div class="reminder-column" id="reminder-column-1">  <div id="reminder-label">PROMEMORIA</div></div>
+        <div class="reminder-column" id="reminder-column-2"></div>
+        <div class="reminder-column" id="reminder-column-3"></div>
+        <div class="reminder-column" id="reminder-column-4"> </div>
     </div>
-    <div id="postit-area"></div>
+      <!-- Formatting Bar -->
+    <div id="formatting-bar">
+        <label for="font-select">Scegli font:</label>
+        <select id="font-select">
+            <option value="DM Sans">DM Sans</option>
+            <option value="Arial">Arial</option>
+            <option value="Courier New">Courier New</option>
+            <option value="Georgia">Georgia</option>
+        </select>
+        <button id="bold-button"><b>B</b></button>
+        <button id="italic-button"><i>I</i></button>
+        <label for="font-size-slider">Dimensione font:</label>
+        <input type="range" id="font-size-slider" min="10" max="30" value="14">
+         <div id="color-picker">
+            <div class="color-square" data-color="#ABD699"></div>
+            <div class="color-square" data-color="#F9E29A"></div>
+            <div class="color-square" data-color="#75C987"></div>
+            <div class="color-square" data-color="#16123F"></div>
+        </div>
+    </div>
+
+    <div id="postit-area">         <div id="postit-label">POST-IT  </div>
+</div>
+
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>

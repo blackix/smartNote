@@ -1,13 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
 
+
+/* Include the custom Oliver font */
+@font-face {
+    font-family: 'Oliver';
+    src: url('../static/fonts/Oliver.ttf') format('truetype');
+}
+
 body {
     font-family: "DM Sans", sans-serif;
     font-optical-sizing: auto;
     font-weight: lighter;
     font-style: normal;
     margin: 20px;
-    background-color: #d1cfbc3b;
+    background-color: #e4e4e4d8;
 }
+
 h1, h2 {
     text-align: center;
 }
@@ -15,13 +23,20 @@ h1, h2 {
     text-align: center;
     margin-bottom: 20px;
 }
+#note-form, ::placeholder{
+    color: #ddd;
+}
 #note {
     width: 50%;
     padding: 20px;
     border-radius: 15px;
     border: 1px solid #ccc;
-    
+    font-family: 'DM Sans', sans-serif;  /* Apply the custom Oliver font */
+    font-size: 34px;
+    color: rgb(58, 58, 58);
+    outline: none;
 }
+
 button {
     display: none;
     padding: 20px 20px;
@@ -34,7 +49,6 @@ button {
 button:hover {
     background-color: #45a049;
 }
-
 #result {
     text-align: center;
     margin-top: 20px;
@@ -51,9 +65,10 @@ button:hover {
     box-sizing: border-box;
     position: relative;
     text-align: center;
-    background-color: #c0b2ef4c;
+    background-color: #3e4e6b70;
     border-radius: 15px;
     margin-right: 8px;
+    color: #f1f1f1;
 }
 .day h3 {
     margin: 0;
@@ -62,58 +77,107 @@ button:hover {
 .box {
     margin-top: 10px;
     min-height: 100px;
-    border: 1px dashed #ddd;
-    border-radius: 15px;
+    border: 0px dashed #ddd;
+    border-radius: 10px;
     position: relative;
-        background-color: #c0b2ef78;
+        background-color: #cad3e152;
 }
-.appointment, .reminder {
-    background-color: yellow;
+.appointment {
+    background-color: rgb(255, 0, 81);
     border-radius: 5px;
+    color: #ffecff;
     padding: 5px;
-    margin: 5px;
+    margin-right: 5px;
     position: relative;
     width: calc(100% - 10px);
+    font-weight: bold;
+    align-items: center;
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.reminder {
+    background-color: rgb(0, 81, 255);
+    border-radius: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color: #b6d4ef;
+    padding: 5px;
+    margin-right: 2px;
+    position: relative;
+    width: calc(100% - 10px);
+    font-weight: bold;
+    align-items: center;
+    font-size: 16px;
+}
+.reminder.completed {
+    text-decoration: line-through;
+    color: #ffffff;
+    background-color: #b4b4b4;
 }
 #reminders {
+    display: flex;
+    justify-content: space-between;
     margin-top: 20px;
 }
-#reminder-list {
-    list-style-type: none;
-    padding: 0;
-}
-#reminder-list li {
-    background-color: #f9f9f9;
-    margin: 5px 0;
-    padding: 10px;
+.reminder-column {
+    flex: 1;
     border: 1px solid #ddd;
-    border-radius: 5px;
-    cursor: pointer;
+    padding: 10px;
+    box-sizing: border-box;
+    min-height: 200px;
+    border-radius: 15px;
+    margin-right: 8px;
+    background-color: #ffffff9e;
 }
-#reminder-list li.completed {
-    text-decoration: line-through;
-    color: #999;
+
+#reminder-label {
+    position: relative;
+
+    bottom: 10px;
+    left: 10px;
+    font-size: 48px;
+    color: rgb(255, 0, 0);
+    opacity: 0.7;
+    font-weight: bolder;
 }
 #postit-area {
-    position: relative;
-    height: 300px;
+    position: fixed;
+    bottom: 15px;
+    left: 20px;
+    right: 20px;
+    height: 40vh;
     border: 1px solid #ddd;
-    margin-top: 20px;
-    background-color: #50524332;
+    background-color: #f9f9f9;
+    overflow: auto;
     border-radius: 15px;
+       background-image: radial-gradient(circle, #939393 1px, transparent 1px);
+    background-size: 15px 15px;
 }
+#postit-label {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 58px;
+    font-weight: bold;
+    text-shadow: #101010;
+    color: rgb(255, 230, 0);
+    opacity: 0.8;
+      text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+
+}
+
 .postit {
     width: 75px; /* Half the original width */
     height: 75px; /* Half the original height */
     padding: 10px;
-    position: absolute;
+    position: absolute; /* Allow free positioning within the container */
     border: 1px solid #0000001c;
-    border-radius: 5px;
+    border-radius: 15px;
     cursor: move;
     overflow: auto;
-    resize: both;
-    max-width: 150px; /* Double the initial width */
-    max-height: 150px; /* Double the initial height */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Add shadow to post-its */
+    font-size: 16px;
 }
 .postit .delete-button {
     position: absolute;
@@ -125,7 +189,18 @@ button:hover {
     border-radius: 3px;
     cursor: pointer;
     font-size: 12px;
-       padding: 4px;
+    padding: 4px;
+}
+.postit .resize-button {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 12px;
 }
 .postit.pink {
     background-color: pink;
@@ -139,18 +214,22 @@ button:hover {
 .today {
     background-color: #ffe6e6;
 }
-.today .box{
-    background-color: #d87b7b74;
-}
 .today h3 {
     color: red;
 }
-.ui-resizable-handle {
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    background-color: #00000024;
-    bottom: 0;
-    right: 0;
-    cursor: se-resize;
+
+
+#formatting-bar {
+    margin-bottom: 10px;
+    text-align: center;
+}
+#formatting-bar select,
+#formatting-bar button,
+#formatting-bar input[type=range] {
+    margin: 0 5px;
+    padding: 5px;
+    border-radius: 5px;
+}
+#bold-button, #italic-button {
+    cursor: pointer;
 }

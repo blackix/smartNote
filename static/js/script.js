@@ -68,21 +68,59 @@ function addAppointment(note, originalNote) {
 }
 
 function addReminder(note) {
-    var reminder = document.createElement('li');
-    reminder.innerText = note;
-    reminder.addEventListener('click', function() {
-        reminder.classList.toggle('completed');
-        if (reminder.classList.contains('completed')) {
-            document.getElementById('reminder-list').appendChild(reminder);
+    const columns = document.querySelectorAll('.reminder-column');
+    for (let column of columns) {
+        if (column.children.length < 5) {
+            var reminder = document.createElement('div');
+            reminder.className = 'reminder';
+            reminder.innerText = note;
+            reminder.addEventListener('click', function() {
+                reminder.classList.toggle('completed');
+                if (reminder.classList.contains('completed')) {
+                    column.appendChild(reminder);
+                }
+            });
+            column.appendChild(reminder);
+            break;
         }
-    });
-    document.getElementById('reminder-list').appendChild(reminder);
+    }
 }
+
+// Store the current formatting options
+let currentFont = 'DM Sans';
+let currentBold = false;
+let currentItalic = false;
+let currentFontSize = '14px';
+
+// Update the formatting options when the user changes them
+document.getElementById('font-select').addEventListener('change', function() {
+    currentFont = this.value;
+});
+
+document.getElementById('bold-button').addEventListener('click', function() {
+    currentBold = !currentBold;
+    this.classList.toggle('active');
+});
+
+document.getElementById('italic-button').addEventListener('click', function() {
+    currentItalic = !currentItalic;
+    this.classList.toggle('active');
+});
+
+document.getElementById('font-size-slider').addEventListener('input', function() {
+    currentFontSize = this.value + 'px';
+});
 
 function createPostIt(note) {
     var postIt = document.createElement('div');
     postIt.className = 'postit';
     postIt.innerText = note;
+
+    // Apply current formatting options
+    postIt.style.fontFamily = currentFont;
+    postIt.style.fontWeight = currentBold ? 'bold' : 'normal';
+    postIt.style.fontStyle = currentItalic ? 'italic' : 'normal';
+    postIt.style.fontSize = currentFontSize;
 
     // Aggiungi pulsante di eliminazione
     var deleteButton = document.createElement('button');
@@ -92,6 +130,16 @@ function createPostIt(note) {
         postIt.remove();
     };
     postIt.appendChild(deleteButton);
+
+    // Aggiungi pulsante di ridimensionamento
+    var resizeButton = document.createElement('button');
+    resizeButton.className = 'resize-button';
+    resizeButton.innerHTML = '+';
+    resizeButton.onclick = function() {
+        postIt.style.width = (postIt.clientWidth * 2) + 'px';
+        postIt.style.height = (postIt.clientHeight * 2) + 'px';
+    };
+    postIt.appendChild(resizeButton);
     
     // Assign a random position within the postit-area
     var area = document.getElementById('postit-area');
@@ -109,9 +157,13 @@ function createPostIt(note) {
     postIt.classList.add(randomColor);
 
     area.appendChild(postIt);
-    $(postIt).draggable({ containment: "#postit-area" }).resizable({
-        maxWidth: 150,
-        maxHeight: 150
+
+    // Make post-its draggable with snap to other post-its
+    $(postIt).draggable({
+        containment: "#postit-area",
+        snap: ".postit",
+        snapMode: "both",
+        snapTolerance: 20
     });
 }
 
