@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Note Classifier</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+</head>
+<body>
+
+    <form id="note-form">
+        <input type="text" id="note" name="note" placeholder="Inserisci il tuo appunto:" />
+        <button type="submit">Classifica e Aggiungi Nota</button>
+    </form>
+    <div id="result"></div>
+    <div id="calendar">
+        <div class="day" id="day0"><h3></h3><div class="box"></div></div>
+        <div class="day" id="day1"><h3></h3><div class="box"></div></div>
+        <div class="day" id="day2"><h3></h3><div class="box"></div></div>
+        <div class="day" id="day3"><h3></h3><div class="box"></div></div>
+        <div class="day" id="day4"><h3></h3><div class="box"></div></div>
+        <div class="day" id="day5"><h3></h3><div class="box"></div></div>
+        <div class="day" id="day6"><h3></h3><div class="box"></div></div>
+    </div>
+    <div id="reminders">
+        <h2>Promemoria</h2>
+        <ul id="reminder-list"></ul>
+    </div>
+    <div id="postit-area"></div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
