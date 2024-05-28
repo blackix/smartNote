@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 # Funzione per migliorare il posizionamento nel calendario e generare testi più eloquenti
 def clean_text_with_openai(note, classification):
-    api_key = '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'
+    api_key = 'xxxx'
     url = "https://api.openai.com/v1/completions"
     headers = {
         "Content-Type": "application/json",
